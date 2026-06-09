@@ -1,14 +1,34 @@
-# 🌙 Menstrual Health Tracker
+<div align="center">
 
-**经期健康追踪与多维分析系统** — AI-powered menstrual cycle tracking with multi-dimensional analytics, scientific insights, and empathetic interaction.
+  <img src="assets/logo.svg" width="80" alt="Logo" style="display:none" onerror="this.style.display='none'">
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-purple.svg)](LICENSE)
-[![Python 3.9+](https://img.shields.io/badge/Python-3.9+-green.svg)](https://www.python.org/)
-[![WorkBuddy Skill](https://img.shields.io/badge/WorkBuddy-Skill-9B7EC4.svg)](https://www.codebuddy.cn)
+  # 🌙 经期健康追踪系统
+  ## Menstrual Health Tracker
+
+  <p>
+    <a href="#chinese"><img src="https://img.shields.io/badge/语言-中文-9B7EC4?style=flat-square" alt="中文"></a>
+    <a href="#english"><img src="https://img.shields.io/badge/Lang-English-9B7EC4?style=flat-square" alt="English"></a>
+    <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-purple?style=flat-square"></a>
+    <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.9+-green?style=flat-square"></a>
+    <img src="https://img.shields.io/badge/Version-1.2.0-9B7EC4?style=flat-square">
+  </p>
+
+  <p>
+    <a href="#chinese">🇨🇳 中文</a> &nbsp;|&nbsp;
+    <a href="#english">🇺🇸 English</a>
+  </p>
+
+</div>
 
 ---
 
-## ✨ Features
+<div id="chinese">
+
+## 📖 项目简介
+
+**AI 驱动的经期健康追踪与多维分析系统** — 支持全生命阶段（初潮前→经期→备孕→孕期→产后→围绝经期→绝经后），提供周期规律分析、症状模式识别、智能预测、可视化仪表盘和科学建议。中英双语自动检测，共情交互体验。
+
+## ✨ 核心功能
 
 | 功能 | 描述 |
 |------|------|
@@ -19,6 +39,161 @@
 | 💜 **共情交互** | 4种表达模式，7个生命阶段专属语气 |
 | 👤 **用户档案系统** | 3级问卷，完整度追踪，自动状态切换 |
 | 🌍 **全生命阶段** | 初潮前→经期→备孕→孕期→产后→围绝经期→绝经后 |
+| 🌐 **双语支持** | 自动检测中文/英文，支持会话中切换 |
+
+## 🚀 快速开始
+
+### WorkBuddy 技能安装
+
+在 WorkBuddy 中直接安装使用 — 提及经期相关话题时自动触发。
+
+### 独立使用
+
+```bash
+# 分析数据并生成文本报告
+python scripts/analyze.py ~/.workbuddy/data/menstrual_health.json
+
+# 生成 HTML 仪表盘
+python scripts/analyze.py ~/.workbuddy/data/menstrual_health.json --dashboard output.html
+```
+
+### 数据格式
+
+```json
+{
+  "user_profile": {
+    "life_stage": "menstruating",
+    "typical_cycle_length": 28,
+    "typical_period_length": 5
+  },
+  "cycles": [
+    {
+      "start_date": "2026-06-08",
+      "end_date": "2026-06-14",
+      "flow_level": "medium",
+      "symptoms": { "cramps": { "present": true, "severity": 3 } },
+      "mood_score": 7
+    }
+  ]
+}
+```
+
+## 📁 项目结构
+
+```
+menstrual-health-tracker/
+├── SKILL.md                     # WorkBuddy 技能定义（核心工作流）
+├── README.md                    # 本文件
+├── LICENSE                      # MIT 许可证
+├── .gitignore
+├── scripts/
+│   └── analyze.py               # Python 分析引擎（600+ 行）
+│       • analyze()               # 多维分析
+│       • generate_recommendations()  # 3轮压力测试建议
+│       • generate_dashboard()    # HTML 仪表盘生成
+│       • print_report()          # 命令行文本报告
+│       • add_cycle()             # 数据管理辅助函数
+├── assets/
+│   ├── dashboard.html           # Chart.js 仪表盘模板
+│   ├── demo_data.json           # 测试用演示数据
+│   └── demo_dashboard.html      # 预生成演示仪表盘
+├── references/                   # 中文参考文档
+│   ├── analysis_engine.md       # 分析维度与算法
+│   ├── empathy_guide.md         # 共情交互模式
+│   ├── life_stages.md           # 7个生命阶段适配逻辑
+│   ├── medical_standards.md     # 循证医学参考
+│   └── user_profile.md          # 用户档案系统与问卷
+└── references-en/                # 英文参考文档（English references）
+    ├── analysis_engine.md
+    ├── empathy_guide.md
+    ├── life_stages.md
+    ├── medical_standards.md
+    └── user_profile.md
+```
+
+## 🔬 分析引擎
+
+Python 分析引擎 (`scripts/analyze.py`) 执行：
+
+1. **周期规律** — 均值、标准差、变异系数、趋势斜率（线性回归）
+2. **症状模式** — 频率分布、严重度趋势、高频症状排行
+3. **情绪分析** — 周期日相关的情绪曲线
+4. **智能预测** — 指数衰减加权平均 + 3种近期模式检测：
+   - 模式一：与历史均值显著偏离
+   - 模式二：近期比历史更规律
+   - 模式三：稳定短周期模式（28-35天）
+5. **事件影响** — 生活事件与周期变化的相关性
+6. **健康预警** — 自动标记需关注的异常模式
+
+## 🎨 仪表盘
+
+HTML 仪表盘包含：
+- **日历热力图** — 可视化 4+ 年周期数据
+- **周期趋势图** — 含移动平均线的折线图
+- **症状雷达图** — 多症状频率分布
+- **情绪曲线** — 周期日情绪变化模式
+- **预测时间线** — 下次经期、排卵期、易孕窗口
+- **智能洞察** — 带严重度级别的个性化建议
+
+配色：柔紫/珊瑚/绿/粉，暖白背景，支持深色模式。
+
+## 🩺 医疗安全
+
+- 所有建议均经过 3 轮压力测试
+- 就医建议明确标注 ⚕️
+- 不提供处方药推荐
+- 孕期/产后严格安全边界
+- 异常模式自动预警
+
+**免责声明**：本工具基于数据模式提供健康参考，不能替代专业医学诊断。
+
+## 🤝 参与贡献
+
+欢迎贡献！关注方向：
+- 更多症状分类体系
+- 更多生命阶段适配
+- 移动端 PWA 版本
+- 多语言扩展
+
+## ☕ 支持项目
+
+如果这个项目对你有帮助，欢迎请我喝杯咖啡：
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center"><img src="assets/donate/wechat-donate.jpg" width="200" alt="微信赞赏"/><br/>微信赞赏</td>
+      <td align="center"><img src="assets/donate/alipay-donate.jpg" width="200" alt="支付宝赞赏"/><br/>支付宝赞赏</td>
+    </tr>
+  </table>
+</div>
+
+## 📄 许可证
+
+MIT — 详见 [LICENSE](LICENSE)。
+
+</div>
+
+---
+
+<div id="english">
+
+## 📖 Overview
+
+**AI-powered menstrual cycle tracking & multi-dimensional analysis system** — covers all life stages (premenarche → menstruating → TTC → pregnant → postpartum → perimenopause → postmenopause). Features cycle regularity analysis, symptom pattern recognition, smart prediction, visual dashboards, and science-backed recommendations. Bilingual auto-detection with empathetic interaction.
+
+## ✨ Features
+
+| Feature | Description |
+|---------|-------------|
+| 📊 **Multi-Dimensional Analysis** | Cycle regularity, symptom patterns, mood trends, physical tracking, factor correlation |
+| 🔮 **Smart Prediction** | Exponential-decay weighted average + pattern detection, auto-adapting to cycle changes |
+| 📈 **Visual Dashboard** | Chart.js-powered HTML dashboard with heatmaps, trend charts, radar charts, timelines |
+| 🩺 **Science-Backed Advice** | 3-round stress testing (scientific accuracy → personalization → safety) |
+| 💜 **Empathetic Interaction** | 4 expression modes, 7 life-stage-specific tones |
+| 👤 **User Profile System** | 3-tier questionnaire, completeness tracking, auto status switching |
+| 🌍 **Full Life Stages** | Premenarche → Menstruating → TTC → Pregnant → Postpartum → Perimenopause → Postmenopause |
+| 🌐 **Bilingual Support** | Auto-detect Chinese/English, switch mid-conversation |
 
 ## 🚀 Quick Start
 
@@ -76,12 +251,18 @@ menstrual-health-tracker/
 │   ├── dashboard.html           # Chart.js dashboard template
 │   ├── demo_data.json           # Demo data for testing
 │   └── demo_dashboard.html      # Pre-generated demo dashboard
-└── references/
-    ├── analysis_engine.md       # Analysis dimensions & algorithms
-    ├── empathy_guide.md         # Empathetic interaction patterns
-    ├── life_stages.md           # 7 life stage adaptation logic
-    ├── medical_standards.md     # Evidence-based medical references
-    └── user_profile.md          # Profile system design & questionnaires
+├── references/                   # Chinese reference docs (中文参考文档)
+│   ├── analysis_engine.md       # Analysis dimensions & algorithms
+│   ├── empathy_guide.md         # Empathetic interaction patterns
+│   ├── life_stages.md           # 7 life stage adaptation logic
+│   ├── medical_standards.md     # Evidence-based medical references
+│   └── user_profile.md          # Profile system design & questionnaires
+└── references-en/                # English reference docs
+    ├── analysis_engine.md
+    ├── empathy_guide.md
+    ├── life_stages.md
+    ├── medical_standards.md
+    └── user_profile.md
 ```
 
 ## 🔬 Analysis Engine
@@ -125,18 +306,18 @@ Color theme: soft purple/coral/green/pink on warm white background. Dark mode su
 Contributions welcome! Areas of interest:
 - Additional symptom taxonomies
 - More life stage adaptations
-- i18n support
 - Mobile PWA version
+- Additional language support
 
 ## ☕ Support
 
-如果这个项目对你有帮助，欢迎请我喝杯咖啡：
+If this project helps you, consider buying me a coffee:
 
 <div align="center">
   <table>
     <tr>
-      <td align="center"><img src="assets/donate/wechat-donate.jpg" width="200" alt="微信赞赏"/><br/>微信赞赏</td>
-      <td align="center"><img src="assets/donate/alipay-donate.jpg" width="200" alt="支付宝赞赏"/><br/>支付宝赞赏</td>
+      <td align="center"><img src="assets/donate/wechat-donate.jpg" width="200" alt="WeChat Donate"/><br/>WeChat Donate</td>
+      <td align="center"><img src="assets/donate/alipay-donate.jpg" width="200" alt="Alipay Donate"/><br/>Alipay Donate</td>
     </tr>
   </table>
 </div>
@@ -144,3 +325,11 @@ Contributions welcome! Areas of interest:
 ## 📄 License
 
 MIT — see [LICENSE](LICENSE) for details.
+
+</div>
+
+---
+
+<div align="center">
+  <sub>🌙 照顾好自己，每个阶段都值得被温柔对待 · Every stage deserves care</sub>
+</div>
