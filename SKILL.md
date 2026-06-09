@@ -1,28 +1,89 @@
 ---
 name: menstrual-health-tracker
-description: 经期健康追踪与多维分析系统。当用户需要记录经期、查看周期规律、分析症状模式、获取健康建议，或提及经期/月经/例假/大姨妈/周期/排卵/备孕/孕期/产后/绝经/围绝经期/初潮等相关话题时触发。覆盖全生命阶段：初潮前、正常经期、备孕、孕期、产后、围绝经期、绝经后。提供数据可视化仪表盘、科学建议和共情交互。
+description: 经期健康追踪与多维分析系统。当用户需要记录经期、查看周期规律、分析症状模式、获取健康建议，或提及经期/月经/例假/大姨妈/周期/排卵/备孕/孕期/产后/绝经/围绝经期/初潮等相关话题时触发。Also triggers on English topics: period/menstrual cycle/tracking/ovulation/TTC/pregnant/postpartum/menopause/perimenopause. Covers all life stages with bilingual support (中文/English). 提供数据可视化仪表盘、科学建议和共情交互。
+version: 1.2.0
 agent_created: true
 ---
 
-# 经期健康追踪系统
+# 经期健康追踪系统 / Menstrual Health Tracker
 
-## 核心理念
+## LANGUAGE DETECTION (Highest Priority — Before All Other Steps)
 
-**每一次记录都是对身体的倾听。** 本skill提供：
+**At the START of every session, detect the user's language and route accordingly.**
+
+### Detection Rules
+
+| User Language | Reference Path | Interaction Language | Dashboard Language |
+|--------------|----------------|---------------------|-------------------|
+| Chinese (中文) | `references/` | All user-facing output in Chinese (简体中文) | Chinese labels |
+| English | `references-en/` | All user-facing output in English | English labels |
+| Other | Ask user preference | Follow user's choice | Follow user's choice |
+
+### How to Detect
+
+1. **Check user's FIRST message language:**
+   - Contains Chinese characters (汉字) → Chinese mode
+   - English-only (no Chinese characters) → English mode
+   - Mixed or other → Ask: "中文还是英文？ / Chinese or English?"
+
+2. **Do NOT auto-switch mid-conversation.** Once a language is set, stay with it unless user explicitly requests switching.
+
+3. **Language switch on user request:**
+   - User says "切换到中文" / "用中文" → Switch to Chinese mode, reload `references/` instead of `references-en/`
+   - User says "switch to English" / "in English please" → Switch to English mode, reload `references-en/` instead of `references/`
+
+### File Routing Table
+
+When in **Chinese mode**, read:
+- `references/user_profile.md`
+- `references/life_stages.md`
+- `references/analysis_engine.md`
+- `references/empathy_guide.md`
+- `references/medical_standards.md`
+
+When in **English mode**, read:
+- `references-en/user_profile.md`
+- `references-en/life_stages.md`
+- `references-en/analysis_engine.md`
+- `references-en/empathy_guide.md`
+- `references-en/medical_standards.md`
+
+### Interaction Language Rules by Mode
+
+**Chinese mode** — All user-facing output MUST be in Chinese:
+- Onboarding questions, feedback, suggestions, dashboard labels → Chinese
+- Stage transition signals to watch: "怀孕了", "生了", "备孕", "潮热", etc. (Chinese signal words)
+- Empathy patterns: "确认+正常化", "确认+洞察+行动", "庆祝+积极反馈", "温柔提醒+科学依据"
+
+**English mode** — All user-facing output MUST be in English:
+- Onboarding questions, feedback, suggestions, dashboard labels → English
+- Stage transition signals to watch: "I'm pregnant", "I gave birth", "TTC", "hot flashes", etc. (English signal words)
+- Empathy patterns: "Validate + Normalize", "Validate + Insight + Action", "Celebrate + Positive Feedback", "Gentle Reminder + Scientific Basis"
+
+**IMPORTANT**: After language detection, proceed to Step 0 (Profile System) below. The core workflow logic (profile, recording, analysis, visualization, recommendations, empathy) is the same regardless of language — only the reference files and output language differ.
+
+---
+
+## 核心理念 / Core Philosophy
+
+**每一次记录都是对身体的倾听。** / **Every entry is an act of listening to your body.** 本skill提供：
 - 精准数据记录 + 多维可视化分析
 - 全生命阶段适配（初潮前→绝经后）
 - 科学循证建议 + 共情交互
 - 压力测试校验后的高质量建议
 - 极致美感的HTML仪表盘展示
 
-## 工作流程
+## 工作流程 / Workflow
 
-### Step 0: 用户档案系统（最高优先级）
+### Step 0: 用户档案系统（最高优先级）/ User Profile System (Highest Priority)
 
 **档案是整个 skill 的核心上下文。所有分析、建议、语气、追踪维度都必须基于档案数据进行个性化调整。**
 
-读取 `references/user_profile.md` 获取完整档案系统设计、前置问卷、权重规则和状态切换逻辑。
-读取 `references/life_stages.md` 了解各阶段的专属逻辑。
+根据语言模式读取对应的档案系统文件：
+- 中文模式：读取 `references/user_profile.md` 获取完整档案系统设计、前置问卷、权重规则和状态切换逻辑。
+- 英文模式：读取 `references-en/user_profile.md` for the complete profile system.
+
+读取对应语言版本的 `life_stages.md` 了解各阶段的专属逻辑。
 
 #### 0a. 档案加载逻辑
 
@@ -124,11 +185,11 @@ agent_created: true
 如果用户提供历史经期数据（文字、表格、聊天记录），解析并整理为结构化JSON。缺失的数据标记为null而非编造。
 
 #### 1e. 记录后的即时反馈
-每次记录后给出简短共情反馈，根据记录内容提供1-2条即时小建议。使用 `references/empathy_guide.md` 中的表达模式。
+每次记录后给出简短共情反馈，根据记录内容提供1-2条即时小建议。使用对应语言版本的 `empathy_guide.md` 中的表达模式。
 
 ### Step 2: 数据分析
 
-参考 `references/analysis_engine.md` 进行多维度分析。
+参考对应语言版本的 `analysis_engine.md` 进行多维度分析。
 
 分析维度：
 1. **周期规律**：平均周期长度、标准差、变异系数、趋势
@@ -161,9 +222,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 **核心要求：所有建议必须经过3轮压力测试校验。**
 
-参考 `references/analysis_engine.md` 中的建议生成算法和压力测试规则。
+参考对应语言版本的 `analysis_engine.md` 中的建议生成算法和压力测试规则。
 
-参考 `references/medical_standards.md` 获取循证医学参考数据。
+参考对应语言版本的 `medical_standards.md` 获取循证医学参考数据。
 
 建议生成流程：
 1. 分析用户数据，识别可给出建议的模式
@@ -183,7 +244,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 ### Step 5: 共情交互
 
-严格遵循 `references/empathy_guide.md` 中的共情原则。
+严格遵循对应语言版本的 `empathy_guide.md` 中的共情原则。
 
 关键要点：
 - 使用"确认+正常化"、"确认+洞察+行动"、"庆祝+积极反馈"、"温柔提醒+科学依据"四种表达模式
@@ -284,7 +345,7 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 ```
 
-字段权重和格式细节参考 `references/user_profile.md` 和 `references/analysis_engine.md`。
+字段权重和格式细节参考对应语言版本的 `user_profile.md` 和 `analysis_engine.md`。
 
 ### 档案完整度进度
 
@@ -301,7 +362,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 ### 必须遵守的规则
 1. **不提供医疗诊断**：所有建议标注"基于数据的健康参考，不替代专业医疗诊断"
-2. **异常值必须提醒就医**：参考 `references/medical_standards.md` 中的预警信号
+2. **异常值必须提醒就医**：参考对应语言版本的 `medical_standards.md` 中的预警信号
 3. **不推荐处方药**：只讨论营养素、生活方式等非药物干预
 4. **孕期/产后严格边界**：任何异常立即建议联系产科医生
 5. **隐私保护**：经期数据属于高度敏感个人信息，仅存储在本地
