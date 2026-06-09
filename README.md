@@ -1,30 +1,18 @@
 <div align="center">
 
-  <img src="assets/logo.svg" width="80" alt="Logo" style="display:none" onerror="this.style.display='none'">
+# 🌙 经期健康追踪系统
+### Menstrual Health Tracker
 
-  # 🌙 经期健康追踪系统
-  ## Menstrual Health Tracker
-
-  <p>
-    <a href="#chinese"><img src="https://img.shields.io/badge/语言-中文-9B7EC4?style=flat-square" alt="中文"></a>
-    <a href="#english"><img src="https://img.shields.io/badge/Lang-English-9B7EC4?style=flat-square" alt="English"></a>
-    <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-purple?style=flat-square"></a>
-    <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.9+-green?style=flat-square"></a>
-    <img src="https://img.shields.io/badge/Version-1.2.0-9B7EC4?style=flat-square">
-  </p>
-
-  <p>
-    <a href="#chinese">🇨🇳 中文</a> &nbsp;|&nbsp;
-    <a href="#english">🇺🇸 English</a>
-  </p>
+<p>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-purple?style=flat-square"></a>
+  <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.9+-green?style=flat-square"></a>
+  <img src="https://img.shields.io/badge/Version-1.2.0-9B7EC4?style=flat-square">
+</p>
 
 </div>
 
----
-
-<div id="chinese">
-
-## 📖 项目简介
+<details open>
+<summary><b>🇨🇳 中文</b></summary>
 
 **AI 驱动的经期健康追踪与多维分析系统** — 支持全生命阶段（初潮前→经期→备孕→孕期→产后→围绝经期→绝经后），提供周期规律分析、症状模式识别、智能预测、可视化仪表盘和科学建议。中英双语自动检测，共情交互体验。
 
@@ -85,14 +73,8 @@ menstrual-health-tracker/
 ├── SKILL.md                     # WorkBuddy 技能定义（核心工作流）
 ├── README.md                    # 本文件
 ├── LICENSE                      # MIT 许可证
-├── .gitignore
 ├── scripts/
 │   └── analyze.py               # Python 分析引擎（600+ 行）
-│       • analyze()               # 多维分析
-│       • generate_recommendations()  # 3轮压力测试建议
-│       • generate_dashboard()    # HTML 仪表盘生成
-│       • print_report()          # 命令行文本报告
-│       • add_cycle()             # 数据管理辅助函数
 ├── assets/
 │   ├── dashboard.html           # Chart.js 仪表盘模板
 │   ├── demo_data.json           # 测试用演示数据
@@ -103,7 +85,7 @@ menstrual-health-tracker/
 │   ├── life_stages.md           # 7个生命阶段适配逻辑
 │   ├── medical_standards.md     # 循证医学参考
 │   └── user_profile.md          # 用户档案系统与问卷
-└── references-en/                # 英文参考文档（English references）
+└── references-en/                # 英文参考文档
     ├── analysis_engine.md
     ├── empathy_guide.md
     ├── life_stages.md
@@ -127,33 +109,17 @@ Python 分析引擎 (`scripts/analyze.py`) 执行：
 
 ## 🎨 仪表盘
 
-HTML 仪表盘包含：
-- **日历热力图** — 可视化 4+ 年周期数据
-- **周期趋势图** — 含移动平均线的折线图
-- **症状雷达图** — 多症状频率分布
-- **情绪曲线** — 周期日情绪变化模式
-- **预测时间线** — 下次经期、排卵期、易孕窗口
-- **智能洞察** — 带严重度级别的个性化建议
-
-配色：柔紫/珊瑚/绿/粉，暖白背景，支持深色模式。
+HTML 仪表盘包含日历热力图、周期趋势图（含移动平均线）、症状雷达图、情绪曲线、预测时间线、智能洞察。配色：柔紫/珊瑚/绿/粉，暖白背景，支持深色模式。
 
 ## 🩺 医疗安全
 
-- 所有建议均经过 3 轮压力测试
-- 就医建议明确标注 ⚕️
-- 不提供处方药推荐
-- 孕期/产后严格安全边界
-- 异常模式自动预警
+所有建议均经过 3 轮压力测试，就医建议明确标注 ⚕️，不提供处方药推荐，孕期/产后严格安全边界，异常模式自动预警。
 
 **免责声明**：本工具基于数据模式提供健康参考，不能替代专业医学诊断。
 
 ## 🤝 参与贡献
 
-欢迎贡献！关注方向：
-- 更多症状分类体系
-- 更多生命阶段适配
-- 移动端 PWA 版本
-- 多语言扩展
+欢迎贡献！关注方向：更多症状分类体系、更多生命阶段适配、移动端 PWA 版本、多语言扩展。
 
 ## ☕ 支持项目
 
@@ -172,13 +138,10 @@ HTML 仪表盘包含：
 
 MIT — 详见 [LICENSE](LICENSE)。
 
-</div>
+</details>
 
----
-
-<div id="english">
-
-## 📖 Overview
+<details>
+<summary><b>🇺🇸 English</b></summary>
 
 **AI-powered menstrual cycle tracking & multi-dimensional analysis system** — covers all life stages (premenarche → menstruating → TTC → pregnant → postpartum → perimenopause → postmenopause). Features cycle regularity analysis, symptom pattern recognition, smart prediction, visual dashboards, and science-backed recommendations. Bilingual auto-detection with empathetic interaction.
 
@@ -239,14 +202,8 @@ menstrual-health-tracker/
 ├── SKILL.md                     # WorkBuddy skill definition (core workflow)
 ├── README.md                    # This file
 ├── LICENSE                      # MIT License
-├── .gitignore
 ├── scripts/
 │   └── analyze.py               # Python analysis engine (600+ lines)
-│       • analyze()               # Multi-dimension analysis
-│       • generate_recommendations()  # 3-round stress-tested advice
-│       • generate_dashboard()    # HTML dashboard generation
-│       • print_report()          # CLI text report
-│       • add_cycle()             # Data management helpers
 ├── assets/
 │   ├── dashboard.html           # Chart.js dashboard template
 │   ├── demo_data.json           # Demo data for testing
@@ -272,42 +229,23 @@ The Python analysis engine (`scripts/analyze.py`) performs:
 1. **Cycle Regularity** — mean, std, CV, trend slope (linear regression)
 2. **Symptom Patterns** — frequency rate, severity trends, top symptoms
 3. **Mood Analysis** — cycle-day correlated mood curves
-4. **Smart Prediction** — exponential-decay weighted average + 3-mode recent pattern detection:
-   - Mode 1: Significant deviation from historical mean
-   - Mode 2: Recent cycles more regular than historical
-   - Mode 3: Stable short-cycle pattern (28-35 days)
+4. **Smart Prediction** — exponential-decay weighted average + 3-mode recent pattern detection
 5. **Event Impact** — correlation between life events and cycle changes
 6. **Health Alerts** — automatic flagging of concerning patterns
 
 ## 🎨 Dashboard
 
-The HTML dashboard features:
-- **Calendar Heatmap** — visualize 4+ years of cycle data
-- **Cycle Trend Chart** — line chart with moving average
-- **Symptom Radar** — multi-symptom frequency distribution
-- **Mood Curve** — emotional patterns across cycle days
-- **Prediction Timeline** — next period, ovulation, fertile window
-- **Smart Insights** — personalized recommendations with severity levels
-
-Color theme: soft purple/coral/green/pink on warm white background. Dark mode supported.
+The HTML dashboard features calendar heatmap, cycle trend chart with moving average, symptom radar chart, mood curve, prediction timeline, and smart insights. Color theme: soft purple/coral/green/pink on warm white background. Dark mode supported.
 
 ## 🩺 Medical Safety
 
-- All recommendations undergo 3-round stress testing
-- Medical referral suggestions are clearly labeled ⚕️
-- No prescription drug recommendations
-- Strict safety boundaries for pregnancy/postpartum
-- Automatic alert detection for concerning patterns
+All recommendations undergo 3-round stress testing. Medical referral suggestions are clearly labeled ⚕️. No prescription drug recommendations. Strict safety boundaries for pregnancy/postpartum. Automatic alert detection for concerning patterns.
 
 **Disclaimer**: This tool provides health references based on data patterns. It does not replace professional medical diagnosis.
 
 ## 🤝 Contributing
 
-Contributions welcome! Areas of interest:
-- Additional symptom taxonomies
-- More life stage adaptations
-- Mobile PWA version
-- Additional language support
+Contributions welcome! Areas of interest: additional symptom taxonomies, more life stage adaptations, mobile PWA version, additional language support.
 
 ## ☕ Support
 
@@ -326,9 +264,7 @@ If this project helps you, consider buying me a coffee:
 
 MIT — see [LICENSE](LICENSE) for details.
 
-</div>
-
----
+</details>
 
 <div align="center">
   <sub>🌙 照顾好自己，每个阶段都值得被温柔对待 · Every stage deserves care</sub>
