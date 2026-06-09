@@ -9,10 +9,12 @@
   <img src="https://img.shields.io/badge/Version-1.2.0-9B7EC4?style=flat-square">
 </p>
 
+<span id="btn-zh" style="display:inline-block;cursor:pointer;padding:4px 14px;border:2px solid #9B7EC4;border-radius:6px;background:#9B7EC4;color:#fff;font-weight:bold;font-size:14px;margin-right:8px;" onclick="switchLang('zh')">🇨🇳 中文</span><span id="btn-en" style="display:inline-block;cursor:pointer;padding:4px 14px;border:2px solid #9B7EC4;border-radius:6px;background:#fff;color:#9B7EC4;font-weight:bold;font-size:14px;" onclick="switchLang('en')">🇺🇸 English</span>
+
 </div>
 
-<details open>
-<summary><b>🇨🇳 中文</b></summary>
+<!-- ========== 中文内容 ========== -->
+<div id="lang-zh" style="">
 
 **AI 驱动的经期健康追踪与多维分析系统** — 支持全生命阶段（初潮前→经期→备孕→孕期→产后→围绝经期→绝经后），提供周期规律分析、症状模式识别、智能预测、可视化仪表盘和科学建议。中英双语自动检测，共情交互体验。
 
@@ -138,10 +140,10 @@ HTML 仪表盘包含日历热力图、周期趋势图（含移动平均线）、
 
 MIT — 详见 [LICENSE](LICENSE)。
 
-</details>
+</div>
 
-<details>
-<summary><b>🇺🇸 English</b></summary>
+<!-- ========== 英文内容 ========== -->
+<div id="lang-en" style="display:none;">
 
 **AI-powered menstrual cycle tracking & multi-dimensional analysis system** — covers all life stages (premenarche → menstruating → TTC → pregnant → postpartum → perimenopause → postmenopause). Features cycle regularity analysis, symptom pattern recognition, smart prediction, visual dashboards, and science-backed recommendations. Bilingual auto-detection with empathetic interaction.
 
@@ -239,7 +241,7 @@ The HTML dashboard features calendar heatmap, cycle trend chart with moving aver
 
 ## 🩺 Medical Safety
 
-All recommendations undergo 3-round stress testing. Medical referral suggestions are clearly labeled ⚕️. No prescription drug recommendations. Strict safety boundaries for pregnancy/postpartum. Automatic alert detection for concerning patterns.
+All recommendations undergo 3-round stress testing. Medical referral suggestions are clearly labeled ⚕️. No prescription drug recommendations. Strict safety boundaries for pregnancy/postpostum. Automatic alert detection for concerning patterns.
 
 **Disclaimer**: This tool provides health references based on data patterns. It does not replace professional medical diagnosis.
 
@@ -264,8 +266,32 @@ If this project helps you, consider buying me a coffee:
 
 MIT — see [LICENSE](LICENSE) for details.
 
-</details>
+</div>
 
 <div align="center">
   <sub>🌙 照顾好自己，每个阶段都值得被温柔对待 · Every stage deserves care</sub>
 </div>
+
+<script>
+function switchLang(lang) {
+  var zh = document.getElementById('lang-zh');
+  var en = document.getElementById('lang-en');
+  var btnZh = document.getElementById('btn-zh');
+  var btnEn = document.getElementById('btn-en');
+  if (lang === 'zh') {
+    zh.style.display = '';
+    en.style.display = 'none';
+    btnZh.style.background = '#9B7EC4';
+    btnZh.style.color = '#fff';
+    btnEn.style.background = '#fff';
+    btnEn.style.color = '#9B7EC4';
+  } else {
+    zh.style.display = 'none';
+    en.style.display = '';
+    btnZh.style.background = '#fff';
+    btnZh.style.color = '#9B7EC4';
+    btnEn.style.background = '#9B7EC4';
+    btnEn.style.color = '#fff';
+  }
+}
+</script>
