@@ -1,0 +1,25 @@
+# User data — never commit real data
+data/
+*.json
+!assets/demo_data.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Generated dashboards (user-specific)
+*_dashboard.html
+!assets/dashboard.html
