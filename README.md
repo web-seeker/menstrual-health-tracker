@@ -1,7 +1,6 @@
 <div align="center">
 
 # 🌙 经期健康追踪系统
-### Menstrual Health Tracker
 
 <p>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-purple?style=flat-square"></a>
@@ -9,12 +8,7 @@
   <img src="https://img.shields.io/badge/Version-1.2.0-9B7EC4?style=flat-square">
 </p>
 
-<span id="btn-zh" style="display:inline-block;cursor:pointer;padding:4px 14px;border:2px solid #9B7EC4;border-radius:6px;background:#9B7EC4;color:#fff;font-weight:bold;font-size:14px;margin-right:8px;" onclick="switchLang('zh')">🇨🇳 中文</span><span id="btn-en" style="display:inline-block;cursor:pointer;padding:4px 14px;border:2px solid #9B7EC4;border-radius:6px;background:#fff;color:#9B7EC4;font-weight:bold;font-size:14px;" onclick="switchLang('en')">🇺🇸 English</span>
-
 </div>
-
-<!-- ========== 中文内容 ========== -->
-<div id="lang-zh" style="">
 
 **AI 驱动的经期健康追踪与多维分析系统** — 支持全生命阶段（初潮前→经期→备孕→孕期→产后→围绝经期→绝经后），提供周期规律分析、症状模式识别、智能预测、可视化仪表盘和科学建议。中英双语自动检测，共情交互体验。
 
@@ -130,8 +124,8 @@ HTML 仪表盘包含日历热力图、周期趋势图（含移动平均线）、
 <div align="center">
   <table>
     <tr>
-      <td align="center"><img src="assets/donate/wechat-donate.jpg" width="200" alt="微信赞赏"/><br/>微信赞赏</td>
-      <td align="center"><img src="assets/donate/alipay-donate.jpg" width="200" alt="支付宝赞赏"/><br/>支付宝赞赏</td>
+      <td align="center"><img src="assets/donate/wechat-donate.jpg" width="200"/></td>
+      <td align="center"><img src="assets/donate/alipay-donate.jpg" width="200"/></td>
     </tr>
   </table>
 </div>
@@ -139,159 +133,3 @@ HTML 仪表盘包含日历热力图、周期趋势图（含移动平均线）、
 ## 📄 许可证
 
 MIT — 详见 [LICENSE](LICENSE)。
-
-</div>
-
-<!-- ========== 英文内容 ========== -->
-<div id="lang-en" style="display:none;">
-
-**AI-powered menstrual cycle tracking & multi-dimensional analysis system** — covers all life stages (premenarche → menstruating → TTC → pregnant → postpartum → perimenopause → postmenopause). Features cycle regularity analysis, symptom pattern recognition, smart prediction, visual dashboards, and science-backed recommendations. Bilingual auto-detection with empathetic interaction.
-
-## ✨ Features
-
-| Feature | Description |
-|---------|-------------|
-| 📊 **Multi-Dimensional Analysis** | Cycle regularity, symptom patterns, mood trends, physical tracking, factor correlation |
-| 🔮 **Smart Prediction** | Exponential-decay weighted average + pattern detection, auto-adapting to cycle changes |
-| 📈 **Visual Dashboard** | Chart.js-powered HTML dashboard with heatmaps, trend charts, radar charts, timelines |
-| 🩺 **Science-Backed Advice** | 3-round stress testing (scientific accuracy → personalization → safety) |
-| 💜 **Empathetic Interaction** | 4 expression modes, 7 life-stage-specific tones |
-| 👤 **User Profile System** | 3-tier questionnaire, completeness tracking, auto status switching |
-| 🌍 **Full Life Stages** | Premenarche → Menstruating → TTC → Pregnant → Postpartum → Perimenopause → Postmenopause |
-| 🌐 **Bilingual Support** | Auto-detect Chinese/English, switch mid-conversation |
-
-## 🚀 Quick Start
-
-### As a WorkBuddy Skill
-
-Install directly in WorkBuddy — the skill auto-triggers on menstrual health related queries.
-
-### Standalone Usage
-
-```bash
-# Analyze data and print report
-python scripts/analyze.py ~/.workbuddy/data/menstrual_health.json
-
-# Generate HTML dashboard
-python scripts/analyze.py ~/.workbuddy/data/menstrual_health.json --dashboard output.html
-```
-
-### Data Format
-
-```json
-{
-  "user_profile": {
-    "life_stage": "menstruating",
-    "typical_cycle_length": 28,
-    "typical_period_length": 5
-  },
-  "cycles": [
-    {
-      "start_date": "2026-06-08",
-      "end_date": "2026-06-14",
-      "flow_level": "medium",
-      "symptoms": { "cramps": { "present": true, "severity": 3 } },
-      "mood_score": 7
-    }
-  ]
-}
-```
-
-## 📁 Project Structure
-
-```
-menstrual-health-tracker/
-├── SKILL.md                     # WorkBuddy skill definition (core workflow)
-├── README.md                    # This file
-├── LICENSE                      # MIT License
-├── scripts/
-│   └── analyze.py               # Python analysis engine (600+ lines)
-├── assets/
-│   ├── dashboard.html           # Chart.js dashboard template
-│   ├── demo_data.json           # Demo data for testing
-│   └── demo_dashboard.html      # Pre-generated demo dashboard
-├── references/                   # Chinese reference docs (中文参考文档)
-│   ├── analysis_engine.md       # Analysis dimensions & algorithms
-│   ├── empathy_guide.md         # Empathetic interaction patterns
-│   ├── life_stages.md           # 7 life stage adaptation logic
-│   ├── medical_standards.md     # Evidence-based medical references
-│   └── user_profile.md          # Profile system design & questionnaires
-└── references-en/                # English reference docs
-    ├── analysis_engine.md
-    ├── empathy_guide.md
-    ├── life_stages.md
-    ├── medical_standards.md
-    └── user_profile.md
-```
-
-## 🔬 Analysis Engine
-
-The Python analysis engine (`scripts/analyze.py`) performs:
-
-1. **Cycle Regularity** — mean, std, CV, trend slope (linear regression)
-2. **Symptom Patterns** — frequency rate, severity trends, top symptoms
-3. **Mood Analysis** — cycle-day correlated mood curves
-4. **Smart Prediction** — exponential-decay weighted average + 3-mode recent pattern detection
-5. **Event Impact** — correlation between life events and cycle changes
-6. **Health Alerts** — automatic flagging of concerning patterns
-
-## 🎨 Dashboard
-
-The HTML dashboard features calendar heatmap, cycle trend chart with moving average, symptom radar chart, mood curve, prediction timeline, and smart insights. Color theme: soft purple/coral/green/pink on warm white background. Dark mode supported.
-
-## 🩺 Medical Safety
-
-All recommendations undergo 3-round stress testing. Medical referral suggestions are clearly labeled ⚕️. No prescription drug recommendations. Strict safety boundaries for pregnancy/postpostum. Automatic alert detection for concerning patterns.
-
-**Disclaimer**: This tool provides health references based on data patterns. It does not replace professional medical diagnosis.
-
-## 🤝 Contributing
-
-Contributions welcome! Areas of interest: additional symptom taxonomies, more life stage adaptations, mobile PWA version, additional language support.
-
-## ☕ Support
-
-If this project helps you, consider buying me a coffee:
-
-<div align="center">
-  <table>
-    <tr>
-      <td align="center"><img src="assets/donate/wechat-donate.jpg" width="200" alt="WeChat Donate"/><br/>WeChat Donate</td>
-      <td align="center"><img src="assets/donate/alipay-donate.jpg" width="200" alt="Alipay Donate"/><br/>Alipay Donate</td>
-    </tr>
-  </table>
-</div>
-
-## 📄 License
-
-MIT — see [LICENSE](LICENSE) for details.
-
-</div>
-
-<div align="center">
-  <sub>🌙 照顾好自己，每个阶段都值得被温柔对待 · Every stage deserves care</sub>
-</div>
-
-<script>
-function switchLang(lang) {
-  var zh = document.getElementById('lang-zh');
-  var en = document.getElementById('lang-en');
-  var btnZh = document.getElementById('btn-zh');
-  var btnEn = document.getElementById('btn-en');
-  if (lang === 'zh') {
-    zh.style.display = '';
-    en.style.display = 'none';
-    btnZh.style.background = '#9B7EC4';
-    btnZh.style.color = '#fff';
-    btnEn.style.background = '#fff';
-    btnEn.style.color = '#9B7EC4';
-  } else {
-    zh.style.display = 'none';
-    en.style.display = '';
-    btnZh.style.background = '#fff';
-    btnZh.style.color = '#9B7EC4';
-    btnEn.style.background = '#9B7EC4';
-    btnEn.style.color = '#fff';
-  }
-}
-</script>
